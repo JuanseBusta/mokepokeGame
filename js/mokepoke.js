@@ -1,20 +1,25 @@
 function seleccionarMascotaJugador(){
-    let input1 = document.getElementById('burbunene')
-    let input2 = document.getElementById('guacaMike')
-    let input3 = document.getElementById('arruguitas')
-    let input4 = document.getElementById('chorronguito')
-    let input5 = document.getElementById('nenenene')
-
-    if (input1.checked) {
+    let inputBurbunene = document.getElementById('burbunene')
+    let inputGuacaMike = document.getElementById('guacaMike')
+    let inputArruguitas = document.getElementById('arruguitas')
+    let inputChorronguito = document.getElementById('chorronguito')
+    let inputNenenene = document.getElementById('nenenene')
+    let spanMascotaJugador = document.getElementById('mascota-jugador')
+    if (inputBurbunene.checked) {
         alert('Seleccionaste a Burbunene')
-    } else if (input2.checked) {
+        spanMascotaJugador.innerHTML='Burbunene'
+    } else if (inputGuacaMike.checked) {
         alert('Seleccionaste a GuacaMike')
-    } else if (input3.checked) {
+        spanMascotaJugador.innerHTML='GuacaMike'
+    } else if (inputArruguitas.checked) {
         alert('Seleccionaste a Arruguitas')
-    } else if (input4.checked) {
+        spanMascotaJugador.innerHTML='Arruguitas'
+    } else if (inputChorronguito.checked) {
         alert('Seleccionaste a Chorronguito')
-    } else if (input5.checked) {
+        spanMascotaJugador.innerHTML='Chorronguito'
+    } else if (inputNenenene.checked) {
         alert('Seleccionaste a Nenenene')
+        spanMascotaJugador.innerHTML='Nenenene'
     } else { alert('DEBES SELECCIONAR UNA MASCOTA')}
 }
 
