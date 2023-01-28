@@ -1,6 +1,24 @@
+let ataqueJugador
+let ataqueEnemigo
+
 function iniciarJuego(){
     let botonMascotaJugador = document.getElementById('boton-mascota')
     botonMascotaJugador.addEventListener('click',seleccionarMascotaJugador)
+
+    let botonFuego = document.getElementById('boton-fuego')
+    botonFuego.addEventListener('click', ataqueFuego)
+
+    let botonAgua = document.getElementById('boton-agua')
+    botonAgua.addEventListener('click', ataqueAgua)
+
+    let botonTierra = document.getElementById('boton-tierra')
+    botonTierra.addEventListener('click', ataqueTierra)
+
+    let botonLuz = document.getElementById('boton-luz')
+    botonLuz.addEventListener('click', ataqueLuz)
+
+    let botonOscuridad = document.getElementById('boton-oscuridad')
+    botonOscuridad.addEventListener('click', ataqueOscuridad)
 }
 
 function seleccionarMascotaJugador(){
@@ -45,6 +63,27 @@ function seleccionarMascotaEnemigo(){
         spanMascotaEnemigo.innerHTML='Nenenene'
     }
 
+}
+
+function ataqueFuego(){
+    ataqueJugador='Fuego'
+    alert(ataqueJugador)
+}
+function ataqueAgua(){
+    ataqueJugador='Agua'
+    alert(ataqueJugador)
+}
+function ataqueTierra(){
+    ataqueJugador='Tierra'
+    alert(ataqueJugador)
+}
+function ataqueLuz(){
+    ataqueJugador='Luz'
+    alert(ataqueJugador)
+}
+function ataqueOscuridad(){
+    ataqueJugador='Oscuridad'
+    alert(ataqueJugador)
 }
 
 function aleatorio(min,max){
