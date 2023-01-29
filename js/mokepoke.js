@@ -49,15 +49,15 @@ function seleccionarMascotaJugador(){
 
 function seleccionarMascotaEnemigo(){
     let spanMascotaEnemigo = document.getElementById('mascota-enemigo')
-    let seleccionAleatoria = aleatorio(1,5)
+    let mascotaAleatoria = aleatorio(1,5)
 
-    if(seleccionAleatoria==1){
+    if(mascotaAleatoria==1){
         spanMascotaEnemigo.innerHTML='Burbunene'
-    } else if(seleccionAleatoria==2){
+    } else if(mascotaAleatoria==2){
         spanMascotaEnemigo.innerHTML='GuacaMike'
-    } else if(seleccionAleatoria==3){
+    } else if(mascotaAleatoria==3){
         spanMascotaEnemigo.innerHTML='Arruguitas'
-    } else if(seleccionAleatoria==4){
+    } else if(mascotaAleatoria==4){
         spanMascotaEnemigo.innerHTML='Chorronguito'
     } else {
         spanMascotaEnemigo.innerHTML='Nenenene'
@@ -68,22 +68,47 @@ function seleccionarMascotaEnemigo(){
 function ataqueFuego(){
     ataqueJugador='Fuego'
     alert(ataqueJugador)
+    ataqueAleatorioEnemigo()
 }
 function ataqueAgua(){
     ataqueJugador='Agua'
     alert(ataqueJugador)
+    ataqueAleatorioEnemigo()
 }
 function ataqueTierra(){
     ataqueJugador='Tierra'
     alert(ataqueJugador)
+    ataqueAleatorioEnemigo()
 }
 function ataqueLuz(){
     ataqueJugador='Luz'
     alert(ataqueJugador)
+    ataqueAleatorioEnemigo()
 }
 function ataqueOscuridad(){
     ataqueJugador='Oscuridad'
     alert(ataqueJugador)
+    ataqueAleatorioEnemigo()
+}
+
+function ataqueAleatorioEnemigo(){
+    let ataqueAleatorio = aleatorio(1,5)
+    if (ataqueAleatorio==1) {
+        ataqueEnemigo = 'Fuego'
+        alert('El enemigo seleccionó fuego como ataque')
+    } else if (ataqueAleatorio==2) {
+        ataqueEnemigo = 'Agua'
+        alert('El enemigo seleccionó agua como ataque')
+    } else if (ataqueAleatorio==3) {
+        ataqueEnemigo = 'Tierra'
+        alert('El enemigo seleccionó tierra como ataque')
+    } else if (ataqueAleatorio==4) {
+        ataqueEnemigo = 'Luz'
+        alert('El enemigo seleccionó Luz como ataque')
+    } else {
+        ataqueEnemigo = 'Oscuridad'
+        alert('El enemigo seleccionó oscuridad como ataque')
+    }
 }
 
 function aleatorio(min,max){
