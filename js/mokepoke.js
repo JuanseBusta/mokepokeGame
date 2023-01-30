@@ -67,27 +67,27 @@ function seleccionarMascotaEnemigo(){
 
 function ataqueFuego(){
     ataqueJugador='Fuego'
-    alert(ataqueJugador)
+    alert('Seleccionaste '+ataqueJugador)
     ataqueAleatorioEnemigo()
 }
 function ataqueAgua(){
     ataqueJugador='Agua'
-    alert(ataqueJugador)
+    alert('Seleccionaste '+ataqueJugador)
     ataqueAleatorioEnemigo()
 }
 function ataqueTierra(){
     ataqueJugador='Tierra'
-    alert(ataqueJugador)
+    alert('Seleccionaste '+ataqueJugador)
     ataqueAleatorioEnemigo()
 }
 function ataqueLuz(){
     ataqueJugador='Luz'
-    alert(ataqueJugador)
+    alert('Seleccionaste '+ataqueJugador)
     ataqueAleatorioEnemigo()
 }
 function ataqueOscuridad(){
     ataqueJugador='Oscuridad'
-    alert(ataqueJugador)
+    alert('Seleccionaste '+ataqueJugador)
     ataqueAleatorioEnemigo()
 }
 
@@ -109,6 +109,14 @@ function ataqueAleatorioEnemigo(){
         ataqueEnemigo = 'Oscuridad'
         alert('El enemigo seleccionó oscuridad como ataque')
     }
+    crearMensaje()
+}
+
+function crearMensaje(){
+    let sectionMensajes = document.getElementById('mensajes')
+    let parrafo = document.createElement('p')
+    parrafo.innerHTML = 'Tu mascota atacó con '+ataqueJugador+'. La mascota del enemigo atacó con '+ataqueEnemigo+'. Pendiente! 🎉.'
+    sectionMensajes.appendChild(parrafo)
 }
 
 function aleatorio(min,max){
