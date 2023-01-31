@@ -1,5 +1,9 @@
 let ataqueJugador
 let ataqueEnemigo
+let vidaJugador=1000
+let vidaEnemigo=1000
+let ataqueNumEnemigo
+let ataqueNumJugador
 
 function iniciarJuego(){
     let botonMascotaJugador = document.getElementById('boton-mascota')
@@ -109,18 +113,74 @@ function ataqueAleatorioEnemigo(){
         ataqueEnemigo = 'Oscuridad'
         alert('El enemigo seleccionó oscuridad como ataque')
     }
-    crearMensaje()
+    combate()
+}
+
+function combate(){
+    let spanVidaJugador=document.getElementById('salud-jugador')
+    let spanVidaEnemigo=document.getElementById('salud-enemigo')
+
+    while (vidaJugador>0 && vidaEnemigo>0) {
+
+    if (ataqueEnemigo == 'Fuego' && ataqueJugador == 'Tierra' || ataqueEnemigo == 'Agua' && ataqueJugador == 'Fuego' || ataqueEnemigo == 'Tierra' && ataqueJugador == 'Agua'){
+            ataqueNumEnemigo = (aleatorio(80,100))*1.1
+            vidaJugador = vidaJugador-ataqueNumEnemigo
+            spanVidaJugador.innerHTML=vidaJugador
+            ataqueNumJugador = (aleatorio(80,90))*0.9
+            vidaEnemigo = vidaEnemigo-ataqueNumJugador
+            spanVidaEnemigo.innerHTML = vidaEnemigo
+            crearMensaje ()
+            break;
+
+        } else if (ataqueJugador == 'Fuego' && ataqueEnemigo == 'Tierra' || ataqueJugador == 'Agua' && ataqueEnemigo == 'Fuego' || ataqueJugador == 'Tierra' && ataqueEnemigo == 'Agua'){
+            ataqueNumEnemigo= (aleatorio(80,90))*0.9
+            vidaJugador = vidaJugador-ataqueNumEnemigo
+            spanVidaJugador.innerHTML=vidaJugador
+            ataqueNumJugador = (aleatorio(80,100))*1.1
+            vidaEnemigo = vidaEnemigo-ataqueNumJugador
+            spanVidaEnemigo.innerHTML = vidaEnemigo
+            crearMensaje ()
+            break;
+        } else if(ataqueJugador == 'Luz' && ataqueEnemigo == 'Oscuridad' || ataqueJugador == 'Oscuridad' && ataqueEnemigo == 'Luz'){
+            ataqueNumEnemigo=(aleatorio(90,100))*1.25
+            vidaJugador = vidaJugador-ataqueNumEnemigo
+            spanVidaJugador.innerHTML=vidaJugador
+            ataqueNumJugador = (aleatorio(90,100))*1.25
+            vidaEnemigo = vidaEnemigo-ataqueNumJugador
+            spanVidaEnemigo.innerHTML = vidaEnemigo
+            crearMensaje()
+            break;
+        }
+        else {
+            ataqueNumEnemigo=(aleatorio(85,95))
+            vidaJugador = vidaJugador-ataqueNumEnemigo
+            spanVidaJugador.innerHTML=vidaJugador
+            ataqueNumJugador = (aleatorio(85,95))
+            vidaEnemigo = vidaEnemigo-ataqueNumJugador
+            spanVidaEnemigo.innerHTML = vidaEnemigo
+            crearMensaje ()
+            break;
+        }
+    }
+    if(vidaEnemigo<0 && vidaJugador>0){
+        alert('Felicidades! Eres el gran ganador')
+    } else if(vidaJugador<0 && vidaEnemigo>0){
+        alert('Lo sentimos! Perdiste')
+    } else if (vidaJugador<0 && vidaEnemigo<0)alert('Es un empate')
 }
 
 function crearMensaje(){
     let sectionMensajes = document.getElementById('mensajes')
-    let parrafo = document.createElement('p')
-    parrafo.innerHTML = 'Tu mascota atacó con '+ataqueJugador+'. La mascota del enemigo atacó con '+ataqueEnemigo+'. Pendiente! 🎉.'
-    sectionMensajes.appendChild(parrafo)
+    let parrafoMascotas = document.createElement('p')
+    let parrafoAtaques = document.createElement('p')
+    parrafoMascotas.innerHTML = 'Tu mascota atacó con '+ataqueJugador+'. La mascota del enemigo atacó con '+ataqueEnemigo+ '.'
+    parrafoAtaques.innerHTML = 'El enemigo te infligió '+ataqueNumEnemigo+ ' de daño. Tú le infligiste '+ataqueNumJugador+ ' de daño.'
+    sectionMensajes.appendChild(parrafoMascotas)
+    sectionMensajes.appendChild(parrafoAtaques)
 }
 
 function aleatorio(min,max){
-    return Math.floor(Math.random()*(max-min+1)+1)
+    return Math.floor(Math.random()*(max-min+1)+min)
 }
 
 window.addEventListener('load',iniciarJuego);
