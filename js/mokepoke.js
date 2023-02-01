@@ -23,6 +23,9 @@ function iniciarJuego(){
 
     let botonOscuridad = document.getElementById('boton-oscuridad')
     botonOscuridad.addEventListener('click', ataqueOscuridad)
+
+    let botonReiniciar = document.getElementById('reiniciar')
+    botonReiniciar.addEventListener('click',reiniciar)
 }
 
 function seleccionarMascotaJugador(){
@@ -123,20 +126,20 @@ function combate(){
     while (vidaJugador>0 && vidaEnemigo>0) {
 
     if (ataqueEnemigo == 'Fuego' && ataqueJugador == 'Tierra' || ataqueEnemigo == 'Agua' && ataqueJugador == 'Fuego' || ataqueEnemigo == 'Tierra' && ataqueJugador == 'Agua'){
-            ataqueNumEnemigo = (aleatorio(80,100))*1.1
+            ataqueNumEnemigo = (aleatorio(80,100))*1.2
             vidaJugador = vidaJugador-ataqueNumEnemigo
             spanVidaJugador.innerHTML=vidaJugador
-            ataqueNumJugador = (aleatorio(80,90))*0.9
+            ataqueNumJugador = (aleatorio(80,90))*0.8
             vidaEnemigo = vidaEnemigo-ataqueNumJugador
             spanVidaEnemigo.innerHTML = vidaEnemigo
             crearMensaje ()
             break;
 
         } else if (ataqueJugador == 'Fuego' && ataqueEnemigo == 'Tierra' || ataqueJugador == 'Agua' && ataqueEnemigo == 'Fuego' || ataqueJugador == 'Tierra' && ataqueEnemigo == 'Agua'){
-            ataqueNumEnemigo= (aleatorio(80,90))*0.9
+            ataqueNumEnemigo= (aleatorio(80,90))*0.8
             vidaJugador = vidaJugador-ataqueNumEnemigo
             spanVidaJugador.innerHTML=vidaJugador
-            ataqueNumJugador = (aleatorio(80,100))*1.1
+            ataqueNumJugador = (aleatorio(80,100))*1.2
             vidaEnemigo = vidaEnemigo-ataqueNumJugador
             spanVidaEnemigo.innerHTML = vidaEnemigo
             crearMensaje ()
@@ -162,11 +165,14 @@ function combate(){
             break;
         }
     }
+    revisarVidas()
+}
+function revisarVidas(){
     if(vidaEnemigo<0 && vidaJugador>0){
-        alert('Felicidades! Eres el gran ganador')
+        crearMensajeFinal('Felicitaciones! Ganaste🎉')
     } else if(vidaJugador<0 && vidaEnemigo>0){
-        alert('Lo sentimos! Perdiste')
-    } else if (vidaJugador<0 && vidaEnemigo<0)alert('Es un empate')
+        crearMensajeFinal('Lo sentimos! Perdiste😢')
+    } else if (vidaJugador<0 && vidaEnemigo<0) crearMensajeFinal('Es un empate😐')
 }
 
 function crearMensaje(){
@@ -179,6 +185,33 @@ function crearMensaje(){
     sectionMensajes.appendChild(parrafoAtaques)
 }
 
+function crearMensajeFinal(resultadoFinal){
+    let sectionMensajes = document.getElementById('mensajes')
+    let parrafoFinal = document.createElement('p')
+    
+    parrafoFinal.innerHTML = resultadoFinal
+    sectionMensajes.appendChild(parrafoFinal)
+
+    let botonFuego = document.getElementById('boton-fuego')
+    botonFuego.disabled = true
+
+    let botonAgua = document.getElementById('boton-agua')
+    botonAgua.disabled = true
+
+    let botonTierra = document.getElementById('boton-tierra')
+    botonTierra.disabled = true
+
+    let botonLuz = document.getElementById('boton-luz')
+    botonLuz.disabled = true
+
+    let botonOscuridad = document.getElementById('boton-oscuridad')
+    botonOscuridad.disabled = true
+
+}
+
+function reiniciar (){
+    location.reload()
+}
 function aleatorio(min,max){
     return Math.floor(Math.random()*(max-min+1)+min)
 }
