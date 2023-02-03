@@ -1,0 +1,16 @@
+*{
+    box-sizing:border-box;
+}
+h1 {
+    color: crimson;
+    background-color: aqua;
+    width: 390px;
+    height: 40px;
+}
+
+#seleccionar-mascota{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}

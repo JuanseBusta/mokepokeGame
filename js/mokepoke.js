@@ -1,3 +1,4 @@
+'use strict';
 let ataqueJugador
 let ataqueEnemigo
 let vidaJugador=1000
@@ -41,6 +42,8 @@ function seleccionarMascotaJugador(){
     let inputChorronguito = document.getElementById('chorronguito')
     let inputNenenene = document.getElementById('nenenene')
     let spanMascotaJugador = document.getElementById('mascota-jugador')
+    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+    let sectionSeleccionarAtaque = document.getElementById('eleccion-ataque')
     if (inputBurbunene.checked) {
         alert('Seleccionaste a Burbunene')
         spanMascotaJugador.innerHTML='Burbunene'
@@ -57,14 +60,17 @@ function seleccionarMascotaJugador(){
         alert('Seleccionaste a Nenenene')
         spanMascotaJugador.innerHTML='Nenenene'
     } else { alert('DEBES SELECCIONAR UNA MASCOTA')}
+    if(inputBurbunene.checked||inputGuacaMike.checked||inputArruguitas.checked||inputChorronguito.checked||inputNenenene.checked){
+        sectionSeleccionarMascota.style.display = 'none'
+        
+    sectionSeleccionarAtaque.style.display = 'block'
+    }
     seleccionarMascotaEnemigo()
 }
 
 function seleccionarMascotaEnemigo(){
     let spanMascotaEnemigo = document.getElementById('mascota-enemigo')
     let mascotaAleatoria = aleatorio(1,5)
-    let sectionSeleccionarAtaque = document.getElementById('eleccion-ataque')
-    sectionSeleccionarAtaque.style.display = 'block'
     if(mascotaAleatoria==1){
         spanMascotaEnemigo.innerHTML='Burbunene'
     } else if(mascotaAleatoria==2){
@@ -76,8 +82,6 @@ function seleccionarMascotaEnemigo(){
     } else {
         spanMascotaEnemigo.innerHTML='Nenenene'
     }
-    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-    sectionSeleccionarMascota.style.display = 'none'
 }
 
 function ataqueFuego(){
@@ -172,12 +176,25 @@ function combate(){
     }
     revisarVidas()
 }
+
 function revisarVidas(){
     if(vidaEnemigo<0 && vidaJugador>0){
         crearMensajeFinal('Felicitaciones! Ganaste🎉')
     } else if(vidaJugador<0 && vidaEnemigo>0){
         crearMensajeFinal('Lo sentimos! Perdiste😢')
     } else if (vidaJugador<0 && vidaEnemigo<0) crearMensajeFinal('Es un empate😐')
+    encuadreVidas()
+}
+
+function encuadreVidas(){
+    let spanVidaJugador=document.getElementById('salud-jugador')
+    let spanVidaEnemigo=document.getElementById('salud-enemigo')
+    if(vidaEnemigo<0){ 
+        spanVidaEnemigo.innerHTML=0
+    } 
+    if(vidaJugador<0) {
+        spanVidaJugador.innerHTML=0
+    }
 }
 
 function crearMensaje(){
