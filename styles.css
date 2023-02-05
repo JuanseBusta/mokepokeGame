@@ -1,11 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
 *{
     box-sizing:border-box;
 }
-h1 {
-    color: crimson;
-    background-color: aqua;
-    width: 390px;
-    height: 40px;
+body{
+    font-family: 'Passion One', cursive;
+    background-color: #13005A;
 }
 
 #seleccionar-mascota{
@@ -15,13 +14,32 @@ h1 {
     align-items: center;
 }
 
+.titulo {
+    color: crimson;
+    font-size: 40px;
+}
+
+.subtitulo{
+    color: antiquewhite;
+    font-size: 32px;
+}
+
+
+
+.tarjetas{
+    display: flex;
+    gap: 10px;
+}
+
 .tarjeta-mokepoke{
-    width: 100px;
+    width: 180px;
     height: 100px;
-    background-color: aqua;
+    background-color: #00337C;
     padding: 10px;
-    border: 1px solid chocolate;
     margin: 5px;
+    border-radius: 16px;
+
+
 }
 
 input{
