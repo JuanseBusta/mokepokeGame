@@ -1,9 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Passion+One&family=Poppins:wght@200&display=swap');
+
 *{
     box-sizing:border-box;
 }
 body{
-    font-family: 'Passion One', cursive;
+    font-family: 'Poppins', sans-serif;
     background-color: #13005A;
 }
 
@@ -17,6 +18,7 @@ body{
 .titulo {
     color: crimson;
     font-size: 40px;
+    font-family: 'Passion One', cursive;
 }
 
 .subtitulo{
@@ -32,11 +34,10 @@ body{
 }
 
 .tarjeta-mokepoke{
-    width: 220px;
+    width: 228px;
     height: 120px;
     background-color: #00337C;
     padding: 10px;
-    margin: 5px;
     border-radius: 16px;
     display: flex;
     justify-content: center;
@@ -46,8 +47,20 @@ body{
 }
 
 .tarjeta-mokepoke img{
-    height: 112px;
+    height: 88px;
 
+}
+
+#boton-mascota{
+    width: 200px;
+    height: 40px;
+    background-color: transparent;
+    color: wheat;
+    border-radius: 20px;
+    border: 3px solid #1C82AD;
+    margin-top: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
 }
 
 input{
