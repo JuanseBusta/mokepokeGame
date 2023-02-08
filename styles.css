@@ -34,13 +34,14 @@ body{
 }
 
 .tarjeta-mokepoke{
-    width: 228px;
-    height: 120px;
+    width: 168px;
+    height: 188px;
     background-color: #00337C;
     padding: 10px;
     border-radius: 16px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: end;
     align-items: center;
     color: whitesmoke;
     font-size: 24px;
@@ -62,7 +63,22 @@ body{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
 }
+.botones-ataque{
+    width: 140px;
+    height: 60px;
+    background-color: transparent;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 15px;
+    box-shadow: 2px 7px 10px black;
+}
+#eleccion-ataque{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
 
+}
 input{
     display: none;
 }

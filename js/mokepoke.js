@@ -63,7 +63,7 @@ function seleccionarMascotaJugador(){
     if(inputBurbunene.checked||inputGuacaMike.checked||inputArruguitas.checked||inputChorronguito.checked||inputNenenene.checked){
         sectionSeleccionarMascota.style.display = 'none'
         
-    sectionSeleccionarAtaque.style.display = 'block'
+    sectionSeleccionarAtaque.style.display = 'flex'
     }
     seleccionarMascotaEnemigo()
 }
