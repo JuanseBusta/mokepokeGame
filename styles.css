@@ -77,8 +77,26 @@ body{
     justify-content: center;
     align-items: center;
     color: white;
-
 }
+
+#mensajes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 20px;
+}
+
+#boton-reiniciar{
+    border: 2px solid gray;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    background-color: transparent;
+    width: 160px;
+    font-size: 4px;
+}
+
 input{
     display: none;
 }

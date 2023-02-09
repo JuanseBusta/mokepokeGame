@@ -1,8 +1,8 @@
 'use strict';
 let ataqueJugador
 let ataqueEnemigo
-let vidaJugador=1000
-let vidaEnemigo=1000
+let vidaJugador=600
+let vidaEnemigo=600
 let ataqueNumEnemigo
 let ataqueNumJugador
 
@@ -198,17 +198,15 @@ function encuadreVidas(){
 }
 
 function crearMensaje(){
-    let sectionMensajes = document.getElementById('mensajes')
-    let parrafoMascotas = document.createElement('p')
+    let sectionMensajes = document.getElementById('resultado')
     let parrafoAtaques = document.createElement('p')
-    parrafoMascotas.innerHTML = 'Tu mascota atacó con '+ataqueJugador+'. La mascota del enemigo atacó con '+ataqueEnemigo+ '.'
+    sectionMensajes.innerHTML = 'Enemigo atacó con '+ataqueEnemigo+'. Tu mascota atacó con '+ataqueJugador+'.'
     parrafoAtaques.innerHTML = 'El enemigo te infligió '+ataqueNumEnemigo+ ' de daño. Tú le infligiste '+ataqueNumJugador+ ' de daño.'
-    sectionMensajes.appendChild(parrafoMascotas)
     sectionMensajes.appendChild(parrafoAtaques)
 }
 
 function crearMensajeFinal(resultadoFinal){
-    let sectionMensajes = document.getElementById('mensajes')
+    let sectionMensajes = document.getElementById('resultado')
     let parrafoFinal = document.createElement('p')
     
     parrafoFinal.innerHTML = resultadoFinal
