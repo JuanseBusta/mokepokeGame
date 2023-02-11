@@ -89,14 +89,20 @@ body{
 }
 
 #boton-reiniciar{
-    border: 2px solid gray;
+    border: 3px solid gray;
     color: white;
     font-family: 'Poppins', sans-serif;
     background-color: transparent;
-    width: 160px;
-    font-size: 4px;
+    width: 140px;
+    font-size: 20px;
+    border-radius: 15px;
+    box-shadow: 2px 7px 10px black;
 }
 
+.ataques{
+    display: grid;
+    grid-template-columns: 300px 300px;
+}
 input{
     display: none;
 }
