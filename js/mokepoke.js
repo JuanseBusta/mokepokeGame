@@ -5,6 +5,8 @@ let vidaJugador=1000
 let vidaEnemigo=1000
 let ataqueNumEnemigo
 let ataqueNumJugador
+let mascotaJugador
+let mascotaEnemigo
 
 function iniciarJuego(){
     let botonMascotaJugador = document.getElementById('boton-mascota')
@@ -47,18 +49,23 @@ function seleccionarMascotaJugador(){
     if (inputBurbunene.checked) {
         alert('Seleccionaste a Burbunene')
         spanMascotaJugador.innerHTML='Burbunene'
+        mascotaJugador = 'Burbunene'
     } else if (inputGuacaMike.checked) {
         alert('Seleccionaste a GuacaMike')
         spanMascotaJugador.innerHTML='GuacaMike'
+        mascotaJugador = 'GuacaMike'
     } else if (inputArruguitas.checked) {
         alert('Seleccionaste a Arruguitas')
         spanMascotaJugador.innerHTML='Arruguitas'
+        mascotaJugador = 'Arruguitas'
     } else if (inputChorronguito.checked) {
         alert('Seleccionaste a Chorronguito')
         spanMascotaJugador.innerHTML='Chorronguito'
+        mascotaJugador = 'Chorronguito'
     } else if (inputNenenene.checked) {
         alert('Seleccionaste a Nenenene')
         spanMascotaJugador.innerHTML='Nenenene'
+        mascotaJugador = 'Nenenene'
     } else { alert('DEBES SELECCIONAR UNA MASCOTA')}
     if(inputBurbunene.checked||inputGuacaMike.checked||inputArruguitas.checked||inputChorronguito.checked||inputNenenene.checked){
         sectionSeleccionarMascota.style.display = 'none'
@@ -73,40 +80,40 @@ function seleccionarMascotaEnemigo(){
     let mascotaAleatoria = aleatorio(1,5)
     if(mascotaAleatoria==1){
         spanMascotaEnemigo.innerHTML='Burbunene'
+        mascotaEnemigo='Burbunene'
     } else if(mascotaAleatoria==2){
         spanMascotaEnemigo.innerHTML='GuacaMike'
+        mascotaEnemigo='GuacaMike'
     } else if(mascotaAleatoria==3){
         spanMascotaEnemigo.innerHTML='Arruguitas'
+        mascotaEnemigo='Arruguitas'
     } else if(mascotaAleatoria==4){
         spanMascotaEnemigo.innerHTML='Chorronguito'
+        mascotaEnemigo='Chorronguito'
     } else {
         spanMascotaEnemigo.innerHTML='Nenenene'
+        mascotaEnemigo='Nenenene'
     }
 }
 
 function ataqueFuego(){
     ataqueJugador='Fuego'
-    alert('Seleccionaste '+ataqueJugador)
     ataqueAleatorioEnemigo()
 }
 function ataqueAgua(){
     ataqueJugador='Agua'
-    alert('Seleccionaste '+ataqueJugador)
     ataqueAleatorioEnemigo()
 }
 function ataqueTierra(){
     ataqueJugador='Tierra'
-    alert('Seleccionaste '+ataqueJugador)
     ataqueAleatorioEnemigo()
 }
 function ataqueLuz(){
     ataqueJugador='Luz'
-    alert('Seleccionaste '+ataqueJugador)
     ataqueAleatorioEnemigo()
 }
 function ataqueOscuridad(){
     ataqueJugador='Oscuridad'
-    alert('Seleccionaste '+ataqueJugador)
     ataqueAleatorioEnemigo()
 }
 
@@ -114,19 +121,14 @@ function ataqueAleatorioEnemigo(){
     let ataqueAleatorio = aleatorio(1,5)
     if (ataqueAleatorio==1) {
         ataqueEnemigo = 'Fuego'
-        alert('El enemigo seleccionó fuego como ataque')
     } else if (ataqueAleatorio==2) {
         ataqueEnemigo = 'Agua'
-        alert('El enemigo seleccionó agua como ataque')
     } else if (ataqueAleatorio==3) {
         ataqueEnemigo = 'Tierra'
-        alert('El enemigo seleccionó tierra como ataque')
     } else if (ataqueAleatorio==4) {
         ataqueEnemigo = 'Luz'
-        alert('El enemigo seleccionó Luz como ataque')
     } else {
         ataqueEnemigo = 'Oscuridad'
-        alert('El enemigo seleccionó oscuridad como ataque')
     }
     combate()
 }
@@ -201,11 +203,15 @@ function crearMensaje(){
     let sectionMensajes = document.getElementById('resultado')
     let ataquesDelJugador = document.getElementById('ataques-del-jugador')
     let ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
+    let nombreMascotaJugador = document.getElementById('nombre-mascota-jugador')
+    let nombreMascotaEnemigo = document.getElementById('nombre-mascota-enemigo')
 
     let nuevoAtaqueDelJugador = document.createElement('p')
     let nuevoAtaqueDelEnemigo = document.createElement('p')
 
-    sectionMensajes.innerHTML = 'Enemigo atacó con '+ataqueEnemigo+'. Tu mascota atacó con '+ataqueJugador+'.'
+    nombreMascotaJugador.innerHTML=mascotaJugador
+    nombreMascotaEnemigo.innerHTML=mascotaEnemigo
+    sectionMensajes.innerHTML = 'Tu mascota atacó con '+ataqueJugador+'. Enemigo atacó con '+ataqueEnemigo+'.'
     nuevoAtaqueDelEnemigo.innerHTML= 'El enemigo te infligió '+ataqueNumEnemigo+ ' de daño.'
     nuevoAtaqueDelJugador.innerHTML=  'Tú le infligiste '+ataqueNumJugador+ ' de daño.'
     
