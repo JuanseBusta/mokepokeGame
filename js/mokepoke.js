@@ -1,4 +1,37 @@
 'use strict';
+
+const botonMascotaJugador = document.getElementById('boton-mascota')
+const sectionSeleccionarAtaque = document.getElementById('eleccion-ataque')
+const sectionReinicar = document.getElementById('reiniciar')
+const botonFuego = document.getElementById('boton-fuego')
+const botonAgua = document.getElementById('boton-agua')
+const botonTierra = document.getElementById('boton-tierra')
+const botonLuz = document.getElementById('boton-luz')
+const botonOscuridad = document.getElementById('boton-oscuridad')
+const botonReiniciar = document.getElementById('reiniciar')
+
+const inputBurbunene = document.getElementById('burbunene')
+const inputGuacaMike = document.getElementById('guacaMike')
+const inputArruguitas = document.getElementById('arruguitas')
+const inputChorronguito = document.getElementById('chorronguito')
+const inputNenenene = document.getElementById('nenenene')
+const spanMascotaJugador = document.getElementById('mascota-jugador')
+const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
+
+const spanMascotaEnemigo = document.getElementById('mascota-enemigo')
+
+const spanVidaJugador=document.getElementById('salud-jugador')
+const spanVidaEnemigo=document.getElementById('salud-enemigo')
+
+const vidaDelJugador=document.getElementById('vida-jugador')
+const vidaDelEnemigo=document.getElementById('vida-enemigo')
+
+const sectionMensajes = document.getElementById('resultado')
+const ataquesDelJugador = document.getElementById('ataques-del-jugador')
+const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
+const nombreMascotaJugador = document.getElementById('nombre-mascota-jugador')
+const nombreMascotaEnemigo = document.getElementById('nombre-mascota-enemigo')
+
 let ataqueJugador
 let ataqueEnemigo
 let vidaJugador=1000
@@ -7,45 +40,39 @@ let ataqueNumEnemigo
 let ataqueNumJugador
 let mascotaJugador
 let mascotaEnemigo
+let mokepokes = []
+class Mokepoke{
+    constructor(nombre,foto,vida){
+        this.nombre=nombre
+        this.foto=foto
+        this.vida=vida
+    }
+}
+
+let burbunene = new Mokepoke('burbunene','imagenes/Burbunene.png',1000)
+let guacaMike = new Mokepoke('GuacaMike','imagenes/guacamike.png',1000)
+let arruguitas = new Mokepoke('Arruguitas','imagenes/arruguitas.png',1000)
+let chorronguito = new Mokepoke('Chorronguito','imagenes/chorronguito.png',1000)
+let nenenene = new Mokepoke('Nenenene','imagenes/nenenene.png',1000)
+
+mokepokes.push(burbunene, guacaMike, arruguitas, chorronguito, nenenene);
+
+console.log(mokepokes)
 
 function iniciarJuego(){
-    let botonMascotaJugador = document.getElementById('boton-mascota')
     botonMascotaJugador.addEventListener('click',seleccionarMascotaJugador)
-
-    let sectionSeleccionarAtaque = document.getElementById('eleccion-ataque')
     sectionSeleccionarAtaque.style.display = 'none'
-
-    let sectionReinicar = document.getElementById('reiniciar')
     sectionReinicar.style.display = 'none'
-
-    let botonFuego = document.getElementById('boton-fuego')
     botonFuego.addEventListener('click', ataqueFuego)
-
-    let botonAgua = document.getElementById('boton-agua')
     botonAgua.addEventListener('click', ataqueAgua)
-
-    let botonTierra = document.getElementById('boton-tierra')
     botonTierra.addEventListener('click', ataqueTierra)
-
-    let botonLuz = document.getElementById('boton-luz')
     botonLuz.addEventListener('click', ataqueLuz)
-
-    let botonOscuridad = document.getElementById('boton-oscuridad')
     botonOscuridad.addEventListener('click', ataqueOscuridad)
-
-    let botonReiniciar = document.getElementById('reiniciar')
     botonReiniciar.addEventListener('click',reiniciar)
 }
 
 function seleccionarMascotaJugador(){
-    let inputBurbunene = document.getElementById('burbunene')
-    let inputGuacaMike = document.getElementById('guacaMike')
-    let inputArruguitas = document.getElementById('arruguitas')
-    let inputChorronguito = document.getElementById('chorronguito')
-    let inputNenenene = document.getElementById('nenenene')
-    let spanMascotaJugador = document.getElementById('mascota-jugador')
-    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
-    let sectionSeleccionarAtaque = document.getElementById('eleccion-ataque')
+    
     if (inputBurbunene.checked) {
         alert('Seleccionaste a Burbunene')
         spanMascotaJugador.innerHTML='Burbunene'
@@ -76,7 +103,6 @@ function seleccionarMascotaJugador(){
 }
 
 function seleccionarMascotaEnemigo(){
-    let spanMascotaEnemigo = document.getElementById('mascota-enemigo')
     let mascotaAleatoria = aleatorio(1,5)
     if(mascotaAleatoria==1){
         spanMascotaEnemigo.innerHTML='Burbunene'
@@ -134,8 +160,6 @@ function ataqueAleatorioEnemigo(){
 }
 
 function combate(){
-    let spanVidaJugador=document.getElementById('salud-jugador')
-    let spanVidaEnemigo=document.getElementById('salud-enemigo')
 
     while (vidaJugador>0 && vidaEnemigo>0) {
     if (ataqueEnemigo == 'Fuego' && ataqueJugador == 'Tierra' || ataqueEnemigo == 'Agua' && ataqueJugador == 'Fuego' || ataqueEnemigo == 'Tierra' && ataqueJugador == 'Agua'){
@@ -189,26 +213,22 @@ function revisarVidas(){
 }
 
 function encuadreVidas(){
-    let spanVidaJugador=document.getElementById('salud-jugador')
-    let spanVidaEnemigo=document.getElementById('salud-enemigo')
     if(vidaEnemigo<0){ 
         spanVidaEnemigo.innerHTML=0
+        vidaDelEnemigo.innerHTML=0
     } 
     if(vidaJugador<0) {
         spanVidaJugador.innerHTML=0
+        vidaDelJugador.innerHTML=0
     }
 }
 
 function crearMensaje(){
-    let sectionMensajes = document.getElementById('resultado')
-    let ataquesDelJugador = document.getElementById('ataques-del-jugador')
-    let ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
-    let nombreMascotaJugador = document.getElementById('nombre-mascota-jugador')
-    let nombreMascotaEnemigo = document.getElementById('nombre-mascota-enemigo')
-
     let nuevoAtaqueDelJugador = document.createElement('p')
     let nuevoAtaqueDelEnemigo = document.createElement('p')
 
+    vidaDelJugador.innerHTML='Vida: '+vidaJugador
+    vidaDelEnemigo.innerHTML='Vida: '+vidaEnemigo
     nombreMascotaJugador.innerHTML=mascotaJugador
     nombreMascotaEnemigo.innerHTML=mascotaEnemigo
     sectionMensajes.innerHTML = 'Tu mascota atacó con '+ataqueJugador+'. Enemigo atacó con '+ataqueEnemigo+'.'
@@ -217,33 +237,18 @@ function crearMensaje(){
     
     ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
     ataquesDelJugador.appendChild(nuevoAtaqueDelJugador)
-
-
 }
 
 function crearMensajeFinal(resultadoFinal){
-    let sectionMensajes = document.getElementById('resultado')
     let parrafoFinal = document.createElement('p')
     
     parrafoFinal.innerHTML = resultadoFinal
     sectionMensajes.appendChild(parrafoFinal)
-
-    let botonFuego = document.getElementById('boton-fuego')
     botonFuego.disabled = true
-
-    let botonAgua = document.getElementById('boton-agua')
     botonAgua.disabled = true
-
-    let botonTierra = document.getElementById('boton-tierra')
     botonTierra.disabled = true
-
-    let botonLuz = document.getElementById('boton-luz')
     botonLuz.disabled = true
-
-    let botonOscuridad = document.getElementById('boton-oscuridad')
     botonOscuridad.disabled = true
-
-    let sectionReinicar = document.getElementById('reiniciar')
     sectionReinicar.style.display = 'block'
 }
 
