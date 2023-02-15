@@ -10,11 +10,6 @@ const botonLuz = document.getElementById('boton-luz')
 const botonOscuridad = document.getElementById('boton-oscuridad')
 const botonReiniciar = document.getElementById('reiniciar')
 
-const inputBurbunene = document.getElementById('burbunene')
-const inputGuacaMike = document.getElementById('guacaMike')
-const inputArruguitas = document.getElementById('arruguitas')
-const inputChorronguito = document.getElementById('chorronguito')
-const inputNenenene = document.getElementById('nenenene')
 const spanMascotaJugador = document.getElementById('mascota-jugador')
 const sectionSeleccionarMascota = document.getElementById('seleccionar-mascota')
 
@@ -31,7 +26,13 @@ const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const nombreMascotaJugador = document.getElementById('nombre-mascota-jugador')
 const nombreMascotaEnemigo = document.getElementById('nombre-mascota-enemigo')
+const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
 
+let inputBurbunene
+let inputGuacaMike
+let inputArruguitas
+let inputChorronguito
+let inputNenenene
 let ataqueJugador
 let ataqueEnemigo
 let vidaJugador=1000
@@ -41,6 +42,7 @@ let ataqueNumJugador
 let mascotaJugador
 let mascotaEnemigo
 let mokepokes = []
+let opcionDeMokepokes
 class Mokepoke{
     constructor(nombre,foto,vida){
         this.nombre=nombre
@@ -49,7 +51,7 @@ class Mokepoke{
     }
 }
 
-let burbunene = new Mokepoke('burbunene','imagenes/Burbunene.png',1000)
+let burbunene = new Mokepoke('Burbunene','imagenes/Burbunene.png',1000)
 let guacaMike = new Mokepoke('GuacaMike','imagenes/guacamike.png',1000)
 let arruguitas = new Mokepoke('Arruguitas','imagenes/arruguitas.png',1000)
 let chorronguito = new Mokepoke('Chorronguito','imagenes/chorronguito.png',1000)
@@ -57,11 +59,25 @@ let nenenene = new Mokepoke('Nenenene','imagenes/nenenene.png',1000)
 
 mokepokes.push(burbunene, guacaMike, arruguitas, chorronguito, nenenene);
 
-console.log(mokepokes)
 
 function iniciarJuego(){
     botonMascotaJugador.addEventListener('click',seleccionarMascotaJugador)
     sectionSeleccionarAtaque.style.display = 'none'
+    mokepokes.forEach((mokepoke)=>{
+        opcionDeMokepokes = `
+        <input type="radio" name="mascota" id=${mokepoke.nombre} />
+            <label class = "tarjeta-mokepoke" for=${mokepoke.nombre}>
+                <p>${mokepoke.nombre}</p>
+                <img src=${mokepoke.foto} alt=${mokepoke.nombre}>
+            </label>
+        `
+        contenedorTarjetas.innerHTML += opcionDeMokepokes
+         inputBurbunene = document.getElementById('Burbunene')
+         inputGuacaMike = document.getElementById('GuacaMike')
+         inputArruguitas = document.getElementById('Arruguitas')
+         inputChorronguito = document.getElementById('Chorronguito')
+         inputNenenene = document.getElementById('Nenenene')
+    })
     sectionReinicar.style.display = 'none'
     botonFuego.addEventListener('click', ataqueFuego)
     botonAgua.addEventListener('click', ataqueAgua)
