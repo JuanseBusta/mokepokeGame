@@ -68,15 +68,15 @@ function iniciarJuego(){
         <input type="radio" name="mascota" id=${mokepoke.nombre} />
             <label class = "tarjeta-mokepoke" for=${mokepoke.nombre}>
                 <p>${mokepoke.nombre}</p>
-                <img src=${mokepoke.foto} alt=${mokepoke.nombre}>
+                <img src=${mokepoke.foto} alt=${mokepoke.nombre} />
             </label>
         `
         contenedorTarjetas.innerHTML += opcionDeMokepokes
-         inputBurbunene = document.getElementById('Burbunene')
-         inputGuacaMike = document.getElementById('GuacaMike')
-         inputArruguitas = document.getElementById('Arruguitas')
-         inputChorronguito = document.getElementById('Chorronguito')
-         inputNenenene = document.getElementById('Nenenene')
+        inputBurbunene = document.getElementById('Burbunene')
+        inputGuacaMike = document.getElementById('GuacaMike')
+        inputArruguitas = document.getElementById('Arruguitas')
+        inputChorronguito = document.getElementById('Chorronguito')
+        inputNenenene = document.getElementById('Nenenene')
     })
     sectionReinicar.style.display = 'none'
     botonFuego.addEventListener('click', ataqueFuego)
@@ -90,25 +90,25 @@ function iniciarJuego(){
 function seleccionarMascotaJugador(){
     
     if (inputBurbunene.checked) {
-        alert('Seleccionaste a Burbunene')
-        spanMascotaJugador.innerHTML='Burbunene'
-        mascotaJugador = 'Burbunene'
+        alert('Seleccionaste a '+inputBurbunene.id)
+        spanMascotaJugador.innerHTML=inputBurbunene.id
+        mascotaJugador = inputBurbunene.id
     } else if (inputGuacaMike.checked) {
-        alert('Seleccionaste a GuacaMike')
-        spanMascotaJugador.innerHTML='GuacaMike'
-        mascotaJugador = 'GuacaMike'
+        alert('Seleccionaste a '+inputGuacaMike.id)
+        spanMascotaJugador.innerHTML=inputGuacaMike.id
+        mascotaJugador = inputGuacaMike.id
     } else if (inputArruguitas.checked) {
-        alert('Seleccionaste a Arruguitas')
-        spanMascotaJugador.innerHTML='Arruguitas'
-        mascotaJugador = 'Arruguitas'
+        alert('Seleccionaste a '+inputArruguitas.id)
+        spanMascotaJugador.innerHTML=inputArruguitas.id
+        mascotaJugador = inputArruguitas.id
     } else if (inputChorronguito.checked) {
-        alert('Seleccionaste a Chorronguito')
-        spanMascotaJugador.innerHTML='Chorronguito'
-        mascotaJugador = 'Chorronguito'
+        alert('Seleccionaste a '+inputChorronguito.id)
+        spanMascotaJugador.innerHTML=inputChorronguito.id
+        mascotaJugador = inputChorronguito.id
     } else if (inputNenenene.checked) {
-        alert('Seleccionaste a Nenenene')
-        spanMascotaJugador.innerHTML='Nenenene'
-        mascotaJugador = 'Nenenene'
+        alert('Seleccionaste a '+inputNenenene.id)
+        spanMascotaJugador.innerHTML=inputNenenene.id
+        mascotaJugador = inputNenenene.id
     } else { alert('DEBES SELECCIONAR UNA MASCOTA')}
     if(inputBurbunene.checked||inputGuacaMike.checked||inputArruguitas.checked||inputChorronguito.checked||inputNenenene.checked){
         sectionSeleccionarMascota.style.display = 'none'
@@ -119,23 +119,10 @@ function seleccionarMascotaJugador(){
 }
 
 function seleccionarMascotaEnemigo(){
-    let mascotaAleatoria = aleatorio(1,5)
-    if(mascotaAleatoria==1){
-        spanMascotaEnemigo.innerHTML='Burbunene'
-        mascotaEnemigo='Burbunene'
-    } else if(mascotaAleatoria==2){
-        spanMascotaEnemigo.innerHTML='GuacaMike'
-        mascotaEnemigo='GuacaMike'
-    } else if(mascotaAleatoria==3){
-        spanMascotaEnemigo.innerHTML='Arruguitas'
-        mascotaEnemigo='Arruguitas'
-    } else if(mascotaAleatoria==4){
-        spanMascotaEnemigo.innerHTML='Chorronguito'
-        mascotaEnemigo='Chorronguito'
-    } else {
-        spanMascotaEnemigo.innerHTML='Nenenene'
-        mascotaEnemigo='Nenenene'
-    }
+    let mascotaAleatoria = aleatorio(0,mokepokes.length-1)
+    spanMascotaEnemigo.innerHTML=mokepokes[mascotaAleatoria].nombre
+    mascotaEnemigo=mokepokes[mascotaAleatoria].nombre
+    
 }
 
 function ataqueFuego(){
