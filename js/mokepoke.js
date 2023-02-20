@@ -27,6 +27,8 @@ const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const nombreMascotaJugador = document.getElementById('nombre-mascota-jugador')
 const nombreMascotaEnemigo = document.getElementById('nombre-mascota-enemigo')
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
+const sectionVerMapa = document.getElementById('ver-mapa')
+const CanvasMapa = document.getElementById('mapa')
 
 let inputBurbunene
 let inputGuacaMike
@@ -122,7 +124,6 @@ function seleccionarMascotaEnemigo(){
     let mascotaAleatoria = aleatorio(0,mokepokes.length-1)
     spanMascotaEnemigo.innerHTML=mokepokes[mascotaAleatoria].nombre
     mascotaEnemigo=mokepokes[mascotaAleatoria].nombre
-    
 }
 
 function ataqueFuego(){
